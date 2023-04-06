@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+  helpy:
+    build: .
+    restart: always
+    volumes:
+      - $BASE_PATH/data:/helpy/public
+    env_file: stack.env
+    depends_on:
+      - postgres
+    ports: 
+      - "3000:3000"
+  postgres:
+    image: postgres:9.4
+    restart: always
+    env_file: stack.env
+    volumes:
+      - $BASE_PATH/db:/var/lib/postgresql/data
