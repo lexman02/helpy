@@ -8,11 +8,11 @@ services:
       - $BASE_PATH/data:/helpy/public
     env_file: stack.env
     depends_on:
-      - postgres
+      - helpy-db
     ports: 
       - "3000:3000"
-  postgres:
-    image: postgres:9.4
+  helpy-db:
+    image: postgres:alpine
     restart: always
     env_file: stack.env
     volumes:
